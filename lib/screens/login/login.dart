@@ -1,54 +1,57 @@
+import 'package:blood/screens/login/login_controller.dart';
 import 'package:blood/screens/tab_bar.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-           width : MediaQuery.of(context).size.width,
-          height : MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage ('images/BackgroundPic.png'),fit: BoxFit.cover),),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children :[
-                  Image.asset(
-                      'images/logo.png',height: 200,width: 200,fit: BoxFit.fitWidth),
-                  textItem("Email", emailController, false),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  textItem("Password", passController, true),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  // colorButton("Sign Up"),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  buttonItem("login" , 50.0 , (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const TabBarScreen()),
-                    );
-                  } , Colors.red , Colors.white , Colors.white),
-                ]),
+      child: GetBuilder<LoginController>(
+        builder: (loginController) => Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/BackgroundPic.png'),
+                  fit: BoxFit.cover),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('images/logo.png',
+                        height: 200, width: 200, fit: BoxFit.fitWidth),
+                    textItem("Email", loginController.emailController, false),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    textItem("Password", loginController.passController, true),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    // colorButton("Sign Up"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    buttonItem("login", 50.0, () {
+                      loginController.login();
+                    }, Colors.red, Colors.white, Colors.white),
+                  ]),
+            ),
           ),
-        )
-        ,
+        ),
       ),
     );
   }
 
-  Widget buttonItem(String buttonName, double size, Function() onTap , Color textColor , Color buttonColor , Color borderColor ) {
+  Widget buttonItem(String buttonName, double size, Function() onTap,
+      Color textColor, Color buttonColor, Color borderColor) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -59,20 +62,19 @@ class LoginScreen extends StatelessWidget {
           color: buttonColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
-              side:  BorderSide(
+              side: BorderSide(
                 width: 1,
                 color: borderColor,
               )),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               const SizedBox(
                 width: 15,
               ),
               Text(
                 buttonName,
-                style:  TextStyle(
+                style: TextStyle(
                   color: textColor,
                   fontSize: 17,
                 ),
@@ -120,5 +122,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Donate/Donate.dart';
-import 'donorAvailable/blood_donation_request_screen.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class ChangeLanguageScreen extends StatelessWidget {
+  const ChangeLanguageScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF0EFEA),
       appBar: AppBar(
-          leading: SizedBox(),
-          title: Text('Donation System'.tr),
+          leading: const BackButton(color: Colors.white),
+          title: Text('Language'.tr),
           centerTitle: true,
           backgroundColor: Colors.red[700] //,
           ),
@@ -24,52 +22,50 @@ class HomeScreen extends StatelessWidget {
               child: InkWell(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Center(
+                    Image.asset(
+                      "images/arabic.png",
+                      width: 140,
+                      height: 140,
+                    ),
+                    const Center(
                       child: Text(
-                        "DONATE".tr,
+                        "عربي",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.red,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Image.asset(
-                      "images/Donate.png",
-                      width: 300,
-                      height: 250,
-                    ),
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DonationScreen()));
+                  Get.updateLocale(const Locale('ar', 'DZ'));
+                  saveValue("isArabic", true);
+                  Get.back();
                 },
               ),
+            ),
+            Container(
+              color: Colors.grey[600],
+              width: double.infinity,
+              height: 2,
             ),
             Expanded(
               child: InkWell(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Image.asset(
-                      "images/Receive.png",
-                      width: 300,
-                      height: 250,
+                      "images/english.png",
+                      width: 140,
+                      height: 140,
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Center(
+                    const Center(
                       child: Text(
-                        "RECEIVE".tr,
+                        "English",
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.red,
@@ -80,10 +76,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DonorsAvailable()));
+                  Get.updateLocale(const Locale('en', 'US'));
+                  saveValue("isArabic", false);
+                  Get.back();
                 },
               ),
             ),
@@ -91,5 +86,11 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> saveValue(String key, bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(key, value);
+    print('Value saved successfully!');
   }
 }
