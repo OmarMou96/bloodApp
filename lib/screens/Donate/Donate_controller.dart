@@ -23,8 +23,8 @@ class DonateController extends GetxController {
         GetSnackBar(
           title: "failed".tr,
           message: 'fill_data'.tr,
-          icon: Icon(Icons.close),
-          duration: Duration(seconds: 3),
+          icon: const Icon(Icons.close),
+          duration: const Duration(seconds: 3),
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.TOP,
         ),
@@ -41,7 +41,6 @@ class DonateController extends GetxController {
       "age": age.text,
       "bloodgroup": bloodGroup,
       "unit": unit.text,
-      "donor": "2",
       "disease": disease.text,
     });
     if (response.statusCode == 200) {
@@ -49,8 +48,8 @@ class DonateController extends GetxController {
         GetSnackBar(
           title: "success".tr,
           message: 'saved'.tr,
-          icon: Icon(Icons.check),
-          duration: Duration(seconds: 3),
+          icon: const Icon(Icons.check),
+          duration: const Duration(seconds: 3),
           backgroundColor: Colors.green,
           snackPosition: SnackPosition.TOP,
         ),
@@ -61,8 +60,8 @@ class DonateController extends GetxController {
         GetSnackBar(
           title: "failed".tr,
           message: 'error'.tr,
-          icon: Icon(Icons.check),
-          duration: Duration(seconds: 3),
+          icon: const Icon(Icons.check),
+          duration: const Duration(seconds: 3),
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.TOP,
         ),
