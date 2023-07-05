@@ -4,7 +4,7 @@ import 'package:blood/screens/donorAvailable/blood_donation_request_controller.d
 import 'package:blood/screens/login/login_controller.dart';
 import 'package:get/get.dart';
 
-import 'bloodBanks/blood_banks_controller.dart';
+import 'screens/bloodBanks/blood_banks_controller.dart';
 
 class MyBindings extends Bindings {
   @override

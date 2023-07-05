@@ -1,4 +1,4 @@
-import 'package:blood/screens/bindings.dart';
+import 'package:blood/bindings.dart';
 import 'package:blood/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
