@@ -32,22 +32,23 @@ class BloodStockScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
                       child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 36.0, left: 6.0, right: 6.0, bottom: 6.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center, //t5r
-                            children: [
-                              Text(
-                                "${bloodStockController.stockList[index].bloodgroup}",
-                                style: TextStyle(
-                                    fontSize: 32,
-                                    color: Colors.red[700],
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                  " ${"unit".tr} ${bloodStockController.stockList[index].unit}")
-                            ],
-                          )),
+                        padding: const EdgeInsets.only(
+                            top: 36.0, left: 6.0, right: 6.0, bottom: 6.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${bloodStockController.stockList[index].bloodgroup}",
+                              style: TextStyle(
+                                  fontSize: 32,
+                                  color: Colors.red[700],
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                                "${bloodStockController.stockList[index].unit}  ${"ml".tr} ")
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),

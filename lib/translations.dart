@@ -54,11 +54,12 @@ class AppTranslations extends Translations {
           "saved": "Saved Successfully",
           "success": "Success",
           "error": "Error Occurred",
-          "unit :": "Unit :",
+          "ml":"ML",
           "Language": "Language",
           "open_location": "Open location",
           "call_bank": "Call the bank",
-          "banks_around": "Blood Banks Around You"
+          "banks_around": "Blood Banks Around You",
+          "Donor_id": "Donor's id"
         },
         'ar_DZ': {
           'account': 'الحساب',
@@ -111,11 +112,12 @@ class AppTranslations extends Translations {
           "saved": "تم الحفظ بنجاح",
           "success": "تم بنجاح",
           "error": "حدث خطأ ما",
-          "unit :": "المخزون :",
+          "ml":"مل",
           "Language": "اللغة",
           "open_location": "اعرض الموقع",
           "call_bank": "اتصل ببنك الدم",
-          "banks_around": "بنوك الدم حولك"
+          "banks_around": "بنوك الدم حولك",
+          "Donor_id": "الرقم التعريفي للمتبرع"
         }
       };
 }

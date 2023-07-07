@@ -36,7 +36,6 @@ class _DonationScreenState extends State<DonationScreen> {
                   Row(
                     children: [
                       Container(
-                        // padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         height: 59.0,
                         width: Get.size.width - 76,
                         decoration: BoxDecoration(
@@ -88,6 +87,18 @@ class _DonationScreenState extends State<DonationScreen> {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    controller: donateController.donor,
+                    decoration: InputDecoration(
+                      label: Text("Donor_id".tr),
+                      filled: true,
+                      enabled: true,
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                   const SizedBox(
                     height: 15,

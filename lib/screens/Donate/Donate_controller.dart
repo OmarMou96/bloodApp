@@ -10,6 +10,8 @@ class DonateController extends GetxController {
   TextEditingController unit = TextEditingController();
   TextEditingController age = TextEditingController();
   TextEditingController disease = TextEditingController();
+  TextEditingController donor = TextEditingController();
+
   String? bloodGroup;
 
   bool isLoading = false;
@@ -18,6 +20,7 @@ class DonateController extends GetxController {
     if (unit.text.isEmpty ||
         age.text.isEmpty ||
         disease.text.isEmpty ||
+        donor.text.isEmpty ||
         bloodGroup == null) {
       Get.showSnackbar(
         GetSnackBar(
@@ -42,6 +45,7 @@ class DonateController extends GetxController {
       "bloodgroup": bloodGroup,
       "unit": unit.text,
       "disease": disease.text,
+      "donor": donor.text,
     });
     if (response.statusCode == 200) {
       Get.showSnackbar(
